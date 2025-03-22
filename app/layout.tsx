@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Can You ?",
-  description: "Can you afford to work more hours for your next purchase?",
+  title: "Spendable - Save for Tomorrow",
+  description: "How many hours will you work for your next purchase?",
 };
 
 export default function RootLayout({
