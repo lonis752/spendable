@@ -28,7 +28,7 @@ const Hero = () => {
             <div className='flex flex-col items-center justify-center'>
               <p className='max-w-50 text-center'>
                 Spendable helps you determine how many hours you need to work to
-                afford something based on your hourly wage. It's a simple and
+                afford something based on your hourly wage. It&apos;s a simple and
                 effective way to see if a purchase is worth your time!
               </p>
             </div>
