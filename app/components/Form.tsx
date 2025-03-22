@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { Button } from './ui/button';
-import { FaArrowAltCircleUp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { FaArrowAltCircleUp } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { Input } from '@/components/ui/input';
 
 const Form: React.FC = () => {
   const [wage, setWage] = useState<number>(0);
@@ -15,7 +16,11 @@ const Form: React.FC = () => {
 
     try {
       if (wage === purchase) {
-        setHours('1 Hour');
+        if (wage === 0 || purchase === 0) {
+          return;
+        } else {
+          setHours('1 Hour');
+        }
       } else if (wage > purchase) {
         const hrs: number = Math.round((purchase / wage) * 100) / 100;
         const mins: number = Math.round(60 * hrs);
@@ -40,9 +45,11 @@ const Form: React.FC = () => {
   return (
     /* Form slides in from the right */
     <motion.div
-    initial={{ x: "100vw", opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    transition={{ duration: 0.8, ease: "easeOut" }} className='flex flex-col gap-10 mt-10'>
+      initial={{ x: '100vw', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className='flex flex-col gap-10 mt-10'
+    >
       <form
         className='flex flex-col justify-center items-center gap-10'
         onSubmit={onSubmitForm}
@@ -57,7 +64,7 @@ const Form: React.FC = () => {
             </label>
           </div>
           <div className='flex flex-col items-center gap-2'>
-            <input
+            <Input
               name='wage-input'
               type='number'
               className='border-3 rounded-2xl border-green-600 text-end'
@@ -66,7 +73,7 @@ const Form: React.FC = () => {
               onFocus={(e) => e.target.select()}
               required
             />
-            <input
+            <Input
               name='purchase-input'
               type='number'
               className='border-3 rounded-2xl border-red-600 text-end'
@@ -78,23 +85,27 @@ const Form: React.FC = () => {
           </div>
         </div>
         <Button
-          className='font-bold text-xl hover:p-4 hover:text-2xl hover:text-green-600'
+          className='font-bold text-xl bg-green-600 hover:p-4 hover:text-2xl hover:text-green-600 hover:bg-black'
           type='submit'
         >
           $pend
         </Button>
       </form>
       {hours ? (
-          <div className='mt-10'>
+        <div className='mt-10'>
           <p className='text-center text-xl'>
             How long you have worked to spend ${purchase}:
           </p>
           <p className='text-center font-semibold text-2xl mt-5'>{hours}</p>
         </div>
-      ) : (<div className='flex items-center justify-center'>
-        <p className='font-semibold text-2xl mt-5 flex items-center gap-2'>Click the Button<FaArrowAltCircleUp /></p>
-      </div>)}
-      
+      ) : (
+        <div className='flex items-center justify-center'>
+          <p className='font-semibold text-2xl mt-5 flex items-center gap-2'>
+            Click the Button
+            <FaArrowAltCircleUp />
+          </p>
+        </div>
+      )}
     </motion.div>
   );
 };
