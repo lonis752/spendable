@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Footer = () => {
@@ -15,9 +16,17 @@ const Footer = () => {
         <div className="text-white-200 flex gap-2">
           <img src="/favicon.ico" alt="my logo" className="w-6 h-6" />
           <p>|</p>
-          <p>Terms & <span className="text-purple">Conditions</span></p>
+          <Link href='/terms-conditions'>
+            <p className='text-center'>
+              Terms & <span className='text-purple'>Conditions</span>
+            </p>
+          </Link>
           <p>|</p>
-          <p>Privacy <span className="text-purple">Policy</span></p>
+          <Link href='/privacy-policy'>
+            <p className='text-center'>
+              Privacy <span className='text-purple'>Policy</span>
+            </p>
+          </Link>
         </div>
         <div className="flex gap-3">
           <div className="w-10 h-10 rounded-full flex justify-center items-center bg-black-300 border border-black-200">
