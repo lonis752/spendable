@@ -96,7 +96,7 @@ const Form: React.FC = () => {
           <p className='text-center text-xl'>
             How long you have worked to spend ${purchase}:
           </p>
-          <p className='text-center font-semibold text-2xl mt-5'>{hours}</p>
+          <p className='text-center font-semibold text-2xl mt-5 p-5'>{hours}</p>
         </div>
       ) : (
         <div className='flex items-center justify-center'>
